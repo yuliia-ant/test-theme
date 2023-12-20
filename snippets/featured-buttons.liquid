@@ -43,7 +43,7 @@
           {%- else -%}
             <span>Add to cart - {{ product.price | money }}</span>
           {%- endif -%}
-          {%- render 'loading-spinner' -%}
+          {% render 'loading-spinner' %}
         </button>
         {%- if show_dynamic_checkout -%}
           {{ form | payment_button }}
