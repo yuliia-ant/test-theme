@@ -37,13 +37,12 @@
             disabled
           {% endif %}
         >
-          {% comment %} {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-            {{ 'products.product.sold_out' | t }}
+          {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+            Sold out!
           {%- else -%}
             <span>Add to cart - {{ product.price | money }}</span>
-          {%- endif -%} {% endcomment %}
-          <span>Add to cart - {{ product.price | money }}</span>
-          {% comment %} {%- render 'loading-spinner' -%} {% endcomment %}
+          {%- endif -%}
+          {%- render 'loading-spinner' -%}
         </button>
         {%- if show_dynamic_checkout -%}
           {{ form | payment_button }}
@@ -51,5 +50,5 @@
       {%- endform -%}
     </custom-form>
   {%- endif -%}
-  {% comment %} <script src="{{ 'custom-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+  <script src="{{ 'custom-form.js' | asset_url }}" defer="defer"></script>
 </div>

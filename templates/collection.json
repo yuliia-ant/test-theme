@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "featured-collection",
+      "type": "empty-section",
       "settings": {}
     }
   },

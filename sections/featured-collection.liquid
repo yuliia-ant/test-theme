@@ -1,7 +1,7 @@
 {{ 'featured-section.css' | asset_url | stylesheet_tag }}
 
 <div class="featured">
-  <h1 class="featured__header">Featured Products</h1>
+  <h1 class="featured__header">{{ section.settings.title }}</h1>
   <ul class="featured__list">
     {%- for product in collections.all.products -%}
       {% assign not_in_cart = true %}
@@ -16,6 +16,25 @@
         {% render 'featured-product', product: product %}
       {% endif %}
     {%- endfor -%}
-    {% render 'featured-product', product: product %}
   </ul>
 </div>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "tag": "section",
+    "settings": [
+      {
+      "type": "text",
+      "id": "title",
+      "default": "Featured Products",
+      "label": "Title"
+    },
+      {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+    ]
+  }
+  {% endschema %}
