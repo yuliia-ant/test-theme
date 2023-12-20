@@ -10,6 +10,11 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
+
+      assign is_aria_disabled = false
+      if product.selected_or_first_available_variant.available == false or quantity_rule_soldout == false
+        assign is_aria_disabled = true
+      endif
     -%}
     <custom-form method="post" action="/cart/add" data-section-id="{{ section.id }}" class="featured__product__form custom-form">
       {%- assign product_form_id = 'custom-form-' | append: product.id -%}
@@ -31,10 +36,11 @@
         <button
           name="add"
           type="submit"
-          aria-disabled="false"
           class="featured__product__button"
           {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
-            disabled
+            aria-disabled="true"
+            {% else %}
+            aria-disabled="false"
           {% endif %}
         >
           {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
