@@ -1,13 +1,12 @@
 {{ 'featured-section.css' | asset_url | stylesheet_tag }}
 
 <div class="featured">
-  <div class="featured__icon-cart">
+  <a href="/cart" class="featured__icon-cart">
     {% render 'icon-cart' %}
     <div class="featured__icon-cart--bottom">
       <span class="cart-item-count">{{ cart.item_count }}</span>
-      {% comment %} &nbsp;items {% endcomment %}
     </div>
-  </div>
+  </a>
   <h1 class="featured__header">{{ section.settings.title }}</h1>
   <ul class="featured__list">
     {%- for product in collections.frontpage.products -%}
