@@ -33,10 +33,12 @@ if (!customElements.get("custom-form")) {
         fetch("/cart/add", {
           method: "post",
           body: new FormData(this.form),
-        }).finally(() => {
+        }).then(() => {
+          getCartCount();
+        })
+        .finally(() => {
           this.submitButton.setAttribute("aria-disabled", "false");
           this.querySelector(".loading__spinner").classList.add("hidden");
-          getCartCount();
         });
 
         const getCartCount = async () => {
