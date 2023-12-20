@@ -1,16 +1,5 @@
 <div {{ block.shopify_attributes }} class="featured-buttons">
   {%- if product != blank -%}
-    {%- liquid
-      assign gift_card_recipient_feature_active = false
-      if block.settings.show_gift_card_recipient and product.gift_card?
-        assign gift_card_recipient_feature_active = true
-      endif
-
-      assign show_dynamic_checkout = false
-      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
-        assign show_dynamic_checkout = true
-      endif
-    -%}
     <custom-form method="post" action="/cart/add" data-section-id="{{ section.id }}" class="featured__product__form custom-form">
       {%- assign product_form_id = 'custom-form-' | append: product.id -%}
       {%- form 'product',
@@ -45,11 +34,8 @@
           {%- endif -%}
           {% render 'loading-spinner' %}
         </button>
-        {%- if show_dynamic_checkout -%}
-          {{ form | payment_button }}
-        {%- endif -%}
       {%- endform -%}
     </custom-form>
   {%- endif -%}
-  <script src="{{ 'custom-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'component-product-form.js' | asset_url }}" defer="defer"></script>
 </div>

@@ -179,7 +179,7 @@ $animationDuration: 0.3s;
         cursor: not-allowed;
       }
 
-      &:active {
+      &:active:not([aria-disabled="true"]) {
         background-color: $Button-active;
       }
 
