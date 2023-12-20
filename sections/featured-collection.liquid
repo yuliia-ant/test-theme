@@ -1,0 +1,21 @@
+{{ 'featured-section.css' | asset_url | stylesheet_tag }}
+
+<div class="featured">
+  <h1 class="featured__header">Featured Products</h1>
+  <ul class="featured__list">
+    {%- for product in collections.all.products -%}
+      {% assign not_in_cart = true %}
+      {% for item in cart.items %}
+        {% if item.product.id == product.id %}
+          {% assign not_in_cart = false %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% if not_in_cart %}
+        {% render 'featured-product', product: product %}
+      {% endif %}
+    {%- endfor -%}
+    {% render 'featured-product', product: product %}
+  </ul>
+</div>

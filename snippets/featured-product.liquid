@@ -1,0 +1,23 @@
+<li class="featured__product">
+  <a href="/products/{{ product.handle }}" class="featured__product__link">
+    <div class="featured__product__image-container">
+      <img
+      src="{{ product.featured_image | image_url }}"
+      alt="image"
+      loading="lazy"
+      width="375"
+      height="295"
+      class="featured__product__image"
+    >
+    </div>
+  </a>
+  <a href="/products/{{ product.handle }}" class="featured__product__link">
+    <h3 class="featured__product__title">{{ product.title }}</h3>
+  </a>
+  {% render 'featured-buttons',
+    block: block,
+    product: product,
+    section_id: section.id,
+    show_pickup_availability: true
+  %}
+</li>

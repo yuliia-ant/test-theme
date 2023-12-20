@@ -7,6 +7,8 @@
       "external": "Opens external website."
     }
   },
-  "components": {},
-  "sections": {}
+  "components": {
+  },
+  "sections": {
+  }
 }
