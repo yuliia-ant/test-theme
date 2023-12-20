@@ -42,6 +42,8 @@ if (!customElements.get("custom-form")) {
         const getCartCount = async () => {
           const res = await fetch("/cart.json");
           const cart = await res.json();
+          const countDiv = document.querySelector('.cart-item-count');
+          countDiv.innerText = cart.item_count + ' ';
           console.log(cart.item_count)
         }
       }
