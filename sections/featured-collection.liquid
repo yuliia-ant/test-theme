@@ -5,12 +5,12 @@
     {% render 'icon-cart' %}
     <div class="featured__icon-cart--bottom">
       <span class="cart-item-count">{{ cart.item_count }}</span>
-      &nbsp;items
+      {% comment %} &nbsp;items {% endcomment %}
     </div>
   </div>
   <h1 class="featured__header">{{ section.settings.title }}</h1>
   <ul class="featured__list">
-    {%- for product in collections.all.products -%}
+    {%- for product in collections.frontpage.products -%}
       {% assign not_in_cart = true %}
       {% for item in cart.items %}
         {% if item.product.id == product.id %}
