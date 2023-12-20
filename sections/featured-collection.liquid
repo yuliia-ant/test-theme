@@ -4,7 +4,7 @@
   <a href="/cart" class="featured__icon-cart">
     {% render 'icon-cart' %}
     <div class="featured__icon-cart--number">
-      {{ cart.item_count }}
+      <span class="cart-item-count">{{ cart.item_count }}</span>
     </div>
   </a>
   <h1 class="featured__header">{{ section.settings.title }}</h1>
@@ -26,15 +26,15 @@
 </div>
 
 {% schema %}
-{
-  "name": "Featured collection",
-  "tag": "section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
-    }
-  ]
-}
-{% endschema %}
+  {
+    "name": "Featured collection",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ]
+  }
+  {% endschema %}
